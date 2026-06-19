@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://christatzen0.github.io/siteofficial-leyu-com-cn-2/sitemap.xml
