@@ -1,0 +1,416 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.2, user-scalable=yes">
+    <title>满冠体育 · 运动服务专题</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            background: #f3f8fc;
+            color: #1a2c38;
+            line-height: 1.6;
+            padding: 20px 16px;
+        }
+
+        .page {
+            max-width: 1120px;
+            margin: 0 auto;
+            background: #ffffff;
+            border-radius: 40px 40px 28px 28px;
+            box-shadow: 0 12px 30px rgba(12, 52, 70, 0.08);
+            overflow: hidden;
+        }
+
+        /* 首页横幅 —— 杂志式大标题 */
+        .hero {
+            background: linear-gradient(145deg, #d7f0f5 0%, #b3dfe8 100%);
+            padding: 60px 28px 50px;
+            text-align: center;
+            position: relative;
+        }
+
+        .hero h1 {
+            font-size: 2.8rem;
+            font-weight: 600;
+            letter-spacing: -0.02em;
+            color: #054a5f;
+            line-height: 1.15;
+            margin-bottom: 10px;
+        }
+
+        .hero .sub-tag {
+            display: inline-block;
+            background: #054a5f;
+            color: #e5f7fb;
+            padding: 6px 22px;
+            border-radius: 40px;
+            font-size: 0.85rem;
+            font-weight: 500;
+            letter-spacing: 0.3px;
+            text-transform: uppercase;
+            margin-top: 8px;
+        }
+
+        .hero p {
+            margin-top: 24px;
+            max-width: 680px;
+            margin-left: auto;
+            margin-right: auto;
+            font-size: 1.1rem;
+            color: #1f485a;
+            font-weight: 380;
+        }
+
+        .hero .hero-decor {
+            display: inline-block;
+            width: 80px;
+            height: 4px;
+            background: #2d7d8f;
+            border-radius: 4px;
+            margin: 20px auto 0;
+        }
+
+        /* 背景说明 ———— 视觉区块 */
+        .bg-note {
+            background: #f1fafd;
+            margin: 0 24px 30px 24px;
+            padding: 30px 28px;
+            border-radius: 32px;
+            box-shadow: inset 0 2px 6px rgba(44, 140, 160, 0.06);
+            border-left: 6px solid #2d8b9e;
+        }
+
+        .bg-note h2 {
+            font-size: 1.5rem;
+            font-weight: 500;
+            color: #084c5c;
+            margin-bottom: 12px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .bg-note h2::before {
+            content: "→";
+            color: #2d8b9e;
+            font-weight: 600;
+        }
+
+        .bg-note p {
+            color: #264f5e;
+            font-size: 1rem;
+        }
+
+        /* 三段自然介绍 — 网格卡片 */
+        .intro-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 24px;
+            padding: 0 24px 24px;
+        }
+
+        .card {
+            background: #ffffff;
+            border-radius: 28px;
+            padding: 28px 22px;
+            box-shadow: 0 4px 12px rgba(0, 50, 65, 0.06);
+            border: 1px solid #deeff5;
+            transition: 0.2s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-3px);
+            border-color: #aad0dd;
+            box-shadow: 0 8px 20px rgba(8, 94, 112, 0.08);
+        }
+
+        .card h3 {
+            font-size: 1.3rem;
+            font-weight: 540;
+            color: #054a5f;
+            margin-bottom: 14px;
+            border-bottom: 2px solid #b4dbe7;
+            padding-bottom: 10px;
+        }
+
+        .card p {
+            color: #254e5c;
+            font-size: 0.95rem;
+            margin-bottom: 12px;
+        }
+
+        .card .small-tag {
+            display: inline-block;
+            background: #d7edf4;
+            color: #075a6b;
+            padding: 4px 14px;
+            border-radius: 40px;
+            font-size: 0.75rem;
+            font-weight: 500;
+            letter-spacing: 0.02em;
+        }
+
+        /* 特点 + 场景混排 (类似杂志小板块) */
+        .feature-scene {
+            margin: 30px 24px;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            background: #eef7fa;
+            border-radius: 32px;
+            padding: 28px 24px;
+            align-items: stretch;
+        }
+
+        .feature-item {
+            flex: 1 1 180px;
+            background: white;
+            border-radius: 20px;
+            padding: 20px 18px;
+            box-shadow: 0 2px 8px rgba(16, 80, 96, 0.04);
+        }
+
+        .feature-item h4 {
+            font-size: 1rem;
+            font-weight: 600;
+            color: #065566;
+            margin-bottom: 10px;
+        }
+
+        .feature-item p {
+            font-size: 0.9rem;
+            color: #2b5d6b;
+        }
+
+        .feature-item .dot {
+            display: inline-block;
+            width: 10px;
+            height: 10px;
+            background: #349aaf;
+            border-radius: 10px;
+            margin-right: 8px;
+        }
+
+        /* 提示 / FAQ 摘要 整合区 */
+        .hint-faq {
+            background: #d4ecf3;
+            margin: 18px 24px 28px;
+            padding: 28px 26px;
+            border-radius: 32px;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .hint-text {
+            flex: 2 1 260px;
+        }
+
+        .hint-text p {
+            color: #053f4d;
+            font-size: 0.95rem;
+            margin: 6px 0;
+        }
+
+        .hint-text strong {
+            color: #053f4d;
+            font-weight: 600;
+        }
+
+        .faq-mini {
+            flex: 1 1 180px;
+            background: rgba(255, 255, 255, 0.6);
+            padding: 16px 18px;
+            border-radius: 24px;
+            backdrop-filter: blur(2px);
+        }
+
+        .faq-mini h5 {
+            font-size: 0.9rem;
+            color: #033947;
+            margin-bottom: 6px;
+            font-weight: 600;
+        }
+
+        .faq-mini p {
+            font-size: 0.85rem;
+            color: #1b4f5d;
+        }
+
+        .faq-mini .q {
+            font-weight: 500;
+            color: #033947;
+        }
+
+        /* 页尾访问提示 — 融入句子 */
+        .page-footer {
+            padding: 40px 28px 42px;
+            background: #f8fdfe;
+            border-top: 1px solid #c6e0ea;
+            text-align: center;
+        }
+
+        .page-footer p {
+            font-size: 1.05rem;
+            color: #164a59;
+            margin-bottom: 12px;
+        }
+
+        .page-footer .sentence-link {
+            font-size: 1.1rem;
+            background: #e2f3f8;
+            display: inline-block;
+            padding: 8px 24px;
+            border-radius: 60px;
+            transition: 0.15s;
+        }
+
+        .page-footer .sentence-link a {
+            color: #054a5f;
+            text-decoration: none;
+            font-weight: 600;
+            border-bottom: 2px solid #349aaf;
+            padding-bottom: 2px;
+        }
+
+        .page-footer .sentence-link a:hover {
+            background: #c6e3ed;
+            border-bottom-color: #054a5f;
+        }
+
+        .page-footer .muted {
+            font-size: 0.85rem;
+            color: #417485;
+            margin-top: 14px;
+            opacity: 0.8;
+        }
+
+        /* 移动端友好调整 */
+        @media (max-width: 600px) {
+            .hero h1 {
+                font-size: 2.1rem;
+            }
+            .hero {
+                padding: 40px 20px 36px;
+            }
+            .bg-note {
+                margin: 0 12px 24px 12px;
+                padding: 24px 18px;
+            }
+            .intro-grid {
+                padding: 0 12px 16px;
+                gap: 16px;
+            }
+            .feature-scene {
+                margin: 20px 12px;
+                padding: 20px 16px;
+            }
+            .hint-faq {
+                margin: 12px 12px 24px;
+                padding: 20px 18px;
+                flex-direction: column;
+                gap: 16px;
+            }
+            .page-footer {
+                padding: 30px 18px 32px;
+            }
+            .page-footer .sentence-link {
+                font-size: 1rem;
+                padding: 6px 18px;
+            }
+            .card h3 {
+                font-size: 1.15rem;
+            }
+        }
+
+        @media (max-width: 400px) {
+            .hero h1 {
+                font-size: 1.8rem;
+            }
+            .bg-note h2 {
+                font-size: 1.2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+<div class="page">
+
+    <!-- 首页横幅 -->
+    <div class="hero">
+        <h1>满冠 · 运动服务</h1>
+        <span class="sub-tag">杂志专题</span>
+        <div class="hero-decor"></div>
+        <p>从信息入口到内容聚合，为运动社群与机构提供稳定而清晰的服务支撑。<br>不止于平台，更是日常运动的参照坐标。</p>
+    </div>
+
+    <!-- 背景说明 -->
+    <div class="bg-note">
+        <h2>为什么强调“稳定入口”</h2>
+        <p>在众多体育服务中，一个简洁可靠的访问起点往往被忽略。满冠体育的页面结构围绕低频变动、高频可用展开，确保使用者无论何时进入，都能快速获得运动场馆、社群活动与基础指引。没有浮夸的跳转，只有经过梳理的信息路径。</p>
+    </div>
+
+    <!-- 三段自然介绍 (卡片) -->
+    <div class="intro-grid">
+        <div class="card">
+            <h3>运动场景梳理</h3>
+            <p>针对不同运动类型（团体竞技、个人训练、户外休闲）提供分层的简介与推荐。无论是寻找场地还是了解运动文化，都能在这里找到平实的参照。</p>
+            <span class="small-tag">场地 · 活动</span>
+        </div>
+        <div class="card">
+            <h3>服务边界说明</h3>
+            <p>明确告知使用者当前页面所覆盖的服务范围：场馆预约指引、运动安全须知、基础规则说明。不夸大功能，只呈现事实。</p>
+            <span class="small-tag">指南 · 边界</span>
+        </div>
+        <div class="card">
+            <h3>内容更新习惯</h3>
+            <p>保持每月适度的内容迭代，修正信息误差，补充季节运动建议。所有更新均会以日志形式简要记录，方便长期使用者回溯。</p>
+            <span class="small-tag">迭代 · 记录</span>
+        </div>
+    </div>
+
+    <!-- 特点 + 场景混排块 -->
+    <div class="feature-scene">
+        <div class="feature-item">
+            <h4><span class="dot"></span> 信息层级</h4>
+            <p>每个页面区块承担单一任务：介绍、指引或提示。视觉上通过蓝绿色点缀区分，阅读顺序清晰。</p>
+        </div>
+        <div class="feature-item">
+            <h4><span class="dot"></span> 移动优先</h4>
+            <p>卡片布局、字体大小与点击区域均适配手机竖屏，同时保留平板的阅读舒适度。</p>
+        </div>
+        <div class="feature-item">
+            <h4><span class="dot"></span> 常见疑问摘要</h4>
+            <p>集中回答关于场馆开放时段、预约方式、取消规则等高频问题，减少重复咨询。</p>
+        </div>
+    </div>
+
+    <!-- 提示 + FAQ 摘要 -->
+    <div class="hint-faq">
+        <div class="hint-text">
+            <p><strong>提示：</strong> 本页面为介绍性质，所有指向外部服务的链接均经过审核。如需深入了解具体运动项目或场地详情，可参考对应栏目内容。</p>
+        </div>
+        <div class="faq-mini">
+            <h5>FAQ 摘要</h5>
+            <p><span class="q">Q：</span> 如何获取最新运动资讯？<br>— 页面每月更新，建议定期浏览。</p>
+            <p style="margin-top: 6px;"><span class="q">Q：</span> 是否有线下服务点？<br>— 请参考页面内场馆指引板块。</p>
+        </div>
+    </div>
+
+    <!-- 页尾访问提示 — 自然句子嵌入链接 -->
+    <div class="page-footer">
+        <p>如果你想进一步了解运动服务的内容架构与日常运营，可以访问 <span class="sentence-link"><a href="https://mobi-mgsports.com">满冠体育</a></span>，那里整理了更完整的参考信息。</p>
+        <p class="muted">基于实际服务内容制作 · 保持简洁与真实</p>
+    </div>
+
+</div>
+</body>
+</html>
