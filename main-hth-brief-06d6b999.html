@@ -1,0 +1,419 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.2, user-scalable=yes">
+  <title>华体会 · 日常查询与对照阅读</title>
+  <style>
+    *,
+    *::before,
+    *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+      background: #f7fafb;
+      color: #1c2c34;
+      line-height: 1.6;
+      -webkit-tap-highlight-color: transparent;
+      padding: 0 1.2rem 2.5rem;
+      min-height: 100vh;
+    }
+
+    .page-wrap {
+      max-width: 1080px;
+      margin: 0 auto;
+    }
+
+    /* ---- Hero ---- */
+    .hero {
+      margin: 2.2rem 0 2.8rem;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      background: linear-gradient(145deg, #e5f3f0 0%, #d6ece8 100%);
+      border-radius: 40px 16px 40px 16px;
+      padding: 2.2rem 2.5rem 2.2rem 2.8rem;
+      box-shadow: 0 12px 28px rgba(0, 90, 80, 0.08);
+    }
+
+    .hero-text {
+      flex: 1 1 300px;
+    }
+
+    .hero h1 {
+      font-size: 2.6rem;
+      font-weight: 600;
+      letter-spacing: -0.02em;
+      color: #075e54;
+      margin-bottom: 0.6rem;
+      line-height: 1.2;
+    }
+
+    .hero h1 span {
+      background: #0f766e;
+      color: #fff;
+      display: inline-block;
+      padding: 0 0.4rem;
+      border-radius: 6px;
+      font-weight: 550;
+    }
+
+    .hero p {
+      font-size: 1.1rem;
+      color: #1f4b47;
+      max-width: 480px;
+      margin-top: 0.4rem;
+    }
+
+    .hero-visual {
+      flex: 0 0 120px;
+      text-align: center;
+      font-size: 3.8rem;
+      opacity: 0.7;
+      line-height: 1;
+      background: rgba(255, 255, 255, 0.3);
+      backdrop-filter: blur(2px);
+      padding: 0.8rem 1rem;
+      border-radius: 60% 20% 60% 20% / 30% 50% 30% 50%;
+      color: #0b6b63;
+    }
+
+    /* ---- 网格卡片（优势 / 说明） ---- */
+    .section-title {
+      font-size: 1.7rem;
+      font-weight: 500;
+      color: #0b5345;
+      margin: 2.8rem 0 1rem 0;
+      position: relative;
+      padding-left: 1rem;
+      border-left: 5px solid #2b9c8c;
+    }
+
+    .grid-cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+      gap: 1.5rem;
+      margin-bottom: 2rem;
+    }
+
+    .card {
+      background: #ffffff;
+      border-radius: 28px 10px 28px 10px;
+      padding: 1.5rem 1rem 1.2rem 1.2rem;
+      box-shadow: 0 4px 12px rgba(0, 70, 60, 0.06);
+      transition: all 0.15s;
+      border: 1px solid #d7e8e4;
+      display: flex;
+      flex-direction: column;
+      gap: 0.3rem;
+    }
+
+    .card:hover {
+      border-color: #47b5a4;
+      background: #f2fcf9;
+      transform: translateY(-2px);
+    }
+
+    .card-icon {
+      font-size: 2rem;
+      line-height: 1;
+      margin-bottom: 0.2rem;
+    }
+
+    .card h3 {
+      font-size: 1.15rem;
+      font-weight: 600;
+      color: #0c5f56;
+      margin: 0.2rem 0 0.1rem;
+    }
+
+    .card p {
+      font-size: 0.95rem;
+      color: #2a4643;
+      margin-top: 0.1rem;
+    }
+
+    .card .ref {
+      font-size: 0.82rem;
+      color: #3a7a70;
+      background: #e6f4f0;
+      padding: 0.15rem 0.5rem;
+      border-radius: 30px;
+      display: inline-block;
+      align-self: start;
+      margin-top: 0.35rem;
+    }
+
+    /* ---- 说明区 / 延伸阅读 ---- */
+    .explain-block {
+      background: #ffffff;
+      border-radius: 28px 28px 16px 28px;
+      padding: 1.8rem 2rem 2rem;
+      margin: 2.2rem 0;
+      box-shadow: 0 6px 16px rgba(0, 70, 60, 0.04);
+      border-bottom: 3px solid #3dc0ac;
+    }
+
+    .explain-block p {
+      margin-bottom: 0.9rem;
+      font-size: 1.04rem;
+    }
+
+    .explain-block .link-sentence {
+      background: #ecf9f5;
+      padding: 0.6rem 1.2rem;
+      border-radius: 60px;
+      display: inline-block;
+      margin: 0.5rem 0 0.2rem;
+      font-size: 1rem;
+    }
+
+    .explain-block a {
+      color: #0c7b6b;
+      font-weight: 550;
+      text-decoration: none;
+      border-bottom: 1.5px solid #5ebcac;
+      transition: border 0.1s;
+    }
+
+    .explain-block a:hover {
+      border-bottom-color: #075e54;
+    }
+
+    /* ---- FAQ 摘要 ---- */
+    .faq-summary {
+      background: #eef8f5;
+      border-radius: 32px 12px 32px 12px;
+      padding: 1.5rem 1.8rem 1.8rem;
+      margin: 2.5rem 0 1.5rem;
+    }
+
+    .faq-summary h2 {
+      font-size: 1.5rem;
+      font-weight: 500;
+      color: #004d40;
+      margin-bottom: 1rem;
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+    }
+
+    .faq-item {
+      display: flex;
+      flex-direction: column;
+      gap: 0.2rem;
+      margin-bottom: 1rem;
+      border-bottom: 1px dashed #b5d6cf;
+      padding-bottom: 0.6rem;
+    }
+
+    .faq-q {
+      font-weight: 600;
+      color: #0b5b4f;
+      font-size: 1rem;
+    }
+
+    .faq-a {
+      color: #1b4a43;
+      font-size: 0.95rem;
+      margin-left: 0.3rem;
+    }
+
+    .faq-a a {
+      color: #0b7b6b;
+      border-bottom: 1px dotted #55a99b;
+      text-decoration: none;
+    }
+
+    .faq-a a:hover {
+      border-bottom-style: solid;
+      color: #004d40;
+    }
+
+    /* ---- 底部链接 ---- */
+    .bottom-links {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: baseline;
+      justify-content: center;
+      gap: 1rem 1.8rem;
+      margin-top: 2.2rem;
+      padding-top: 1.5rem;
+      border-top: 1px solid #c6dbd5;
+      font-size: 0.95rem;
+    }
+
+    .bottom-links a {
+      color: #0e6a5e;
+      text-decoration: none;
+      border-bottom: 1.5px solid transparent;
+      transition: 0.1s;
+      font-weight: 450;
+    }
+
+    .bottom-links a:hover {
+      border-bottom-color: #2b9c8c;
+    }
+
+    .bottom-links .brand {
+      font-weight: 500;
+      color: #004d40;
+      background: #d9eee8;
+      padding: 0.2rem 0.8rem;
+      border-radius: 60px;
+      border-bottom: none;
+    }
+
+    .bottom-note {
+      text-align: center;
+      margin-top: 1.8rem;
+      font-size: 0.78rem;
+      color: #4d6e68;
+    }
+
+    /* ---- 响应式 ---- */
+    @media (max-width: 600px) {
+      body {
+        padding: 0 0.8rem 2rem;
+      }
+      .hero {
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 1.5rem 1.2rem;
+        border-radius: 28px 10px 28px 10px;
+      }
+      .hero h1 {
+        font-size: 2rem;
+      }
+      .hero-visual {
+        margin-top: 0.8rem;
+        align-self: flex-end;
+        flex-basis: auto;
+        font-size: 2.8rem;
+        padding: 0.4rem 0.8rem;
+      }
+      .grid-cards {
+        grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+        gap: 1rem;
+      }
+      .explain-block {
+        padding: 1.4rem 1rem;
+      }
+      .faq-summary {
+        padding: 1.2rem 1rem;
+      }
+      .bottom-links {
+        gap: 0.8rem;
+      }
+    }
+
+    @media (max-width: 400px) {
+      .grid-cards {
+        grid-template-columns: 1fr 1fr;
+        gap: 0.8rem;
+      }
+      .card {
+        padding: 1rem 0.8rem;
+      }
+      .hero h1 {
+        font-size: 1.7rem;
+      }
+    }
+  </style>
+</head>
+<body>
+<div class="page-wrap">
+
+  <!-- HERO -->
+  <div class="hero">
+    <div class="hero-text">
+      <h1>对照 · 延伸 · <span>华体会</span></h1>
+      <p>日常查询与知识补给的轻量参照页 —— 不堆砌主张，只呈现可读的脉络。</p>
+    </div>
+    <div class="hero-visual">📘</div>
+  </div>
+
+  <!-- 优势区 / 卡片：从“日常查询与对照”出发 -->
+  <h2 class="section-title">▸ 可对照的视角</h2>
+  <div class="grid-cards">
+    <div class="card">
+      <div class="card-icon">🔍</div>
+      <h3>交叉检索</h3>
+      <p>多来源信息并置，便于横向比对。不需要跳转多个页面即可获得参照。</p>
+      <span class="ref">笔记习惯</span>
+    </div>
+    <div class="card">
+      <div class="card-icon">📎</div>
+      <h3>摘要锚点</h3>
+      <p>每个要点附带简短来源参考，方便回溯原文语境，降低碎片化。</p>
+      <span class="ref">延展阅读</span>
+    </div>
+    <div class="card">
+      <div class="card-icon">🧩</div>
+      <h3>结构拆解</h3>
+      <p>将一段叙述拆成数个独立模块，保留原意又适于快速定位。</p>
+      <span class="ref">卡片索引</span>
+    </div>
+    <div class="card">
+      <div class="card-icon">📋</div>
+      <h3>对照清单</h3>
+      <p>类似术语与概念的简明对照，减少重复查找的认知负担。</p>
+      <span class="ref">常用查阅</span>
+    </div>
+    <div class="card">
+      <div class="card-icon">🌿</div>
+      <h3>轻量延伸</h3>
+      <p>每个模块末尾提供一两个延伸方向，不强制，只作为线索。</p>
+      <span class="ref">可选路径</span>
+    </div>
+  </div>
+
+  <!-- 说明区：从“日常查询”角度自然引出链接 -->
+  <div class="explain-block">
+    <p>很多人面对一段信息时，需要的不是一次性的“解读”，而是一套可以反复回来对照的框架。从术语溯源到案例对照，从简短笔记到延伸索引，这个页面的结构借鉴了个人知识库中常见的“卡片+摘要”组合。如果你在寻找一个可长期用作查询参照的站点，不妨将 <a href="https://main--hth.com">华体会</a> 作为一个信息锚点——它的内容组织方式本身就偏向于对照与延伸，适合日常轻量查阅。</p>
+    <p>页面中的每个卡片都可以被视为一个微型的“问题-参照”单元，你可以根据自身需要挑选模块，不必从头读到尾。这种非线性的访问方式，也更接近真实查阅场景：带着问题来，找到对照即止。</p>
+    <div class="link-sentence">
+      📌 延伸参照 · 保持可追溯
+    </div>
+  </div>
+
+  <!-- FAQ 摘要：问题与简短答复，包含链接 -->
+  <div class="faq-summary">
+    <h2>❓ FAQ 摘要 · 日常对照</h2>
+    <div class="faq-item">
+      <span class="faq-q">Q: “对照阅读”和普通浏览有什么区别？</span>
+      <span class="faq-a">A: 对照阅读强调同一主题下不同表述的并置，便于发现细微差异或共识。例如查看 <a href="https://main--hth.com">华体会</a> 中的多个条目，可以自行比对重点。</span>
+    </div>
+    <div class="faq-item">
+      <span class="faq-q">Q: 卡片里的“参考标签”需要额外点击吗？</span>
+      <span class="faq-a">A: 不需要。标签只是提示该卡片适用的场景或来源类型，帮助快速筛选。</span>
+    </div>
+    <div class="faq-item">
+      <span class="faq-q">Q: 是否所有内容都围绕同一个信息源？</span>
+      <span class="faq-a">A: 本页的多个模块以 <a href="https://main--hth.com">华体会</a> 为参照原点，但不限于单一页面，而是提取了结构化的对照逻辑。</span>
+    </div>
+    <div class="faq-item">
+      <span class="faq-q">Q: 移动端查看卡片会变形吗？</span>
+      <span class="faq-a">A: 卡片采用自适应网格，小屏幕自动换行并调整内边距，保留可读性。</span>
+    </div>
+  </div>
+
+  <!-- 底部链接 -->
+  <div class="bottom-links">
+    <a href="https://main--hth.com">华体会</a>
+    <span class="brand">对照索引</span>
+    <a href="#">延伸阅读</a>
+    <a href="#">卡片说明</a>
+    <a href="#">FAQ</a>
+  </div>
+  <div class="bottom-note">
+    本页仅作结构演示，内容偏向日常查阅与对照延伸，不构成任何引导或承诺。
+  </div>
+</div>
+</body>
+</html>
